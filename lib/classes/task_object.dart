@@ -11,4 +11,5 @@ class TaskObject {
   var notificationTime = 0;
   var progrssBar = false;
   var notes = '';
+  var done = false;
 }

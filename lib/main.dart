@@ -1,7 +1,11 @@
-import 'package:material_ui/material_ui.dart';
+import 'package:flutter/material.dart';
 import 'screens/calander.dart';
 import 'screens/new_task.dart';
 import 'screens/todays_schedule.dart';
+import 'screens/settings.dart';
+import 'screens/task_details.dart';
+import 'screens/todo.dart';
+import 'classes/app_data.dart';
 
 void main() {
   runApp(const MyApp());
@@ -56,6 +60,42 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         
         title: Text(widget.title),
+        actions: [
+          // To-do screen
+          IconButton(
+            tooltip: 'To-do',
+            icon: const Icon(Icons.checklist),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute<void>(builder: (_) => const TodoScreen()),
+              );
+            },
+          ),
+          // TEMP: opens the first task so the Task screen can be tested.
+          // Remove this once Today's Schedule / Calendar open tasks.
+          IconButton(
+            tooltip: 'Task (sample)',
+            icon: const Icon(Icons.event_note),
+            onPressed: () {
+              if (AppData.tasks.isEmpty) return;
+              Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => TaskDetailsScreen(task: AppData.tasks.first),
+                ),
+              );
+            },
+          ),
+          // Settings screen
+          IconButton(
+            tooltip: 'Settings',
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute<void>(builder: (_) => const SettingsScreen()),
+              );
+            },
+          ),
+        ],
       ),
 
       body: Align(
