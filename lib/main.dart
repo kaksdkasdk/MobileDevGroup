@@ -11,7 +11,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final colors = ColorScheme.fromSeed(
+      seedColor: Colors.deepPurple,
+    );
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'My Planner',
       theme: ThemeData(
         // This is the theme of your application.
@@ -29,7 +33,11 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: colors,
+        appBarTheme: AppBarTheme(
+          backgroundColor: colors.inversePrimary,
+        
+        ),
       ),
       home: const MyHomePage(title: 'My planner'),
     );
