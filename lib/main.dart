@@ -1,5 +1,7 @@
 import 'package:material_ui/material_ui.dart';
+import 'screens/calander.dart';
 import 'screens/new_task.dart';
+import 'screens/todays_schedule.dart';
 
 void main() {
   runApp(const MyApp());
@@ -67,11 +69,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute<void>(
-                      builder: (_) => const NewTask(),
+                      builder: (_) => const TodaySchedule(),
                     ),
                   );
                 },
                 child: const Text('View Tasks'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute<void>(
+                      builder: (_) => const CalenderScreen(),
+                    ),
+                  );
+                },
+                child: const Text('Calendar'),
               ),
               ElevatedButton(
                 onPressed: () {
